@@ -1,0 +1,52 @@
+{
+  "name": "id-tecnico-del-proyecto",
+  "version": "1.0.0",
+  "description": "DESCRIPCION_DE_TU_JUEGO",
+  "main": "main.js",
+  "author": "NOMBRE_DE_LA_EMPRESA_O_ALIAS",
+  "license": "LICENCIA_AQUI",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "devDependencies": {
+    "electron": "^latest",
+    "electron-builder": "^latest"
+  },
+  "build": {
+    "appId": "com.empresa.NOMBRE_DE_TU_JUEGO",
+    "productName": "NOMBRE_DEL_JUEGO",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "web/**/*"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        },
+        {
+          "target": "portable",
+          "arch": ["x64"]
+        }
+      ],
+      "requestedExecutionLevel": "asInvoker"
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": false,
+      "createDesktopShortcut": false,
+      "createStartMenuShortcut": false,
+      "runAfterFinish": true,
+      "artifactName": "${productName}_Setup.exe"
+    },
+    "portable": {
+      "artifactName": "${productName}_Portable.exe"
+    }
+  }
+}
